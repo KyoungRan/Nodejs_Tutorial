@@ -1,7 +1,14 @@
 var express = require('express');
 var app = express();
 
+app.set('view engine', 'jade');
+app.set('views', './views');
+
 app.use(express.static('public'));
+
+app.get('/template', function(req, res) {
+  res.render('temp', {time: Date(), _title: 'Jade'});
+});
 
 app.get('/', function(req, res) {
   res.send('Hello home page');
